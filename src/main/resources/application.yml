@@ -1,0 +1,16 @@
+spring:
+  security:
+    user:
+      name: 1
+      password: 1
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/shorten
+    username: bob
+    password: 123
+  mustache:
+    suffix: .html
+
+logging:
+  level:
+    root: info
