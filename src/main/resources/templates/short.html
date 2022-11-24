@@ -1,6 +1,14 @@
 <h1>Simple url shortener</h1>
-<h3>{{users}}</h3>
+{{#url1}}
+    <h3>{{message}}</h3>
+    <h3>{{url1}}</h3>
+{{/url1}}
+{{^url1}}
+    <h3>Here shortened link will appear</h3>
+{{/url1}}
+
+
 <form method="post" action="submitform" id="submitform">
-    <input type="text" id="text1" name="text1" value="fields.name">
+    <input type="text" id="url1" name="url1" value="https://www.yandex.ru/map/emhkl34hmdhk">
     <button type="submit" name="submit">Send</button>
 </form>

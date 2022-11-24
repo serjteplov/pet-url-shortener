@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView
 
 
 @RestController
-class DemoController {
+class TemplateController {
 
     @GetMapping
     fun index(model: MutableMap<String?, Any?>): ModelAndView {
@@ -18,15 +18,14 @@ class DemoController {
 
     @GetMapping("/short")
     fun displayUsers(model: MutableMap<String?, Any?>): ModelAndView? {
-        model["users"] = "Paste url here:"
         return ModelAndView("short", model)
     }
 
     @PostMapping("/submitform")
-    fun submitform(@ModelAttribute("text1") text1: String): ModelAndView {
-        println("######### text1 = ${text1}")
-        val modelAndView = ModelAndView("short", "text1", text1)
-        modelAndView.model["users"] = "Done!\n Paste another url:"
+    fun submitform(@ModelAttribute("url1") url1: String): ModelAndView {
+        println("######### url = $url1")
+        val modelAndView = ModelAndView("short", "url1", url1)
+        modelAndView.model["message"] = "Done!"
         return modelAndView
     }
 
