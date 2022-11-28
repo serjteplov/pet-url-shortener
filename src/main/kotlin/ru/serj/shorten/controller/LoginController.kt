@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
-import ru.serj.shorten.domain.LoginDTO
+import ru.serj.shorten.domain.LoginDto
 
 /*
 * Данный контроллер создан с целью показать как при использовании mustache программируется страница логина
@@ -20,13 +20,13 @@ import ru.serj.shorten.domain.LoginDTO
 class LoginController {
     @GetMapping("/login")
     fun login(model: Model): String? {
-        model.addAttribute("formLogin", LoginDTO())
+        model.addAttribute("formLogin", LoginDto())
         return "login"
     }
 
     @PostMapping("/login")
     fun loginPost(
-        @ModelAttribute("formLogin") formLogin: LoginDTO?,
+        @ModelAttribute("formLogin") formLogin: LoginDto?,
         // WARN: BindingResult *must* immediately follow the Command.
         // https://stackoverflow.com/a/29883178/1626026
         bindingResult: BindingResult?,

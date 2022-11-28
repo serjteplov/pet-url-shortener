@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="db/project-properties.xml"/>
+
+    <changeSet author="dbeaver" id="1669265809245-1">
+        <sql>
+            begin;
+            create or replace function gen_random_uuid_offer() returns uuid as
+            $$
+            select md5(random()::text || clock_timestamp()::text)::uuid
+            $$ language sql;
+
+            create table if not exists url_entity (
+                id uuid primary key default gen_random_uuid_offer(),
+                url_long text NOT NULL,
+                url_short varchar(50) NULL,
+                created timestamptz NOT NULL,
+                updated timestamp NULL
+            );
+            commit;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

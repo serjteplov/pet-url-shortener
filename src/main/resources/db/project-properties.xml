@@ -1,0 +1,19 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <property name="sql_end_delimiter" value="\n;" dbms="postgresql"/>
+    <property name="uuid.type" value="uuid" dbms="postgresql"/>
+    <property name="integer.type" value="int4" dbms="postgresql"/>
+    <property name="percent.type" value="numeric(5,2)" dbms="postgresql"/>
+    <property name="boolean.type" value="boolean" dbms="oracle,postgresql,mssql,h2"/>
+    <property name="date.type" value="timestamp with time zone" dbms="postgresql"/>
+    <property name="currency.type" value="number(19, 2)" dbms="oracle,postgresql,mssql,h2,sybase"/>
+    <property name="amount.type" value="number(24, 2)" dbms="oracle,postgresql,mssql,h2,sybase"/>
+    <property name="string" value="VARCHAR(255)" dbms="postgresql,mssql,h2,sybase"/>
+    <property name="ref_code.type" value="VARCHAR(50)" dbms="postgresql,mssql,h2,sybase"/>
+    <property name="long_string.type" value="VARCHAR(10000)" dbms="postgresql,mssql,h2,sybase"/>
+
+</databaseChangeLog>
