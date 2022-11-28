@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 import ru.serj.shorten.domain.entity.UrlEntity
 import java.sql.Timestamp
 import java.time.Instant
-import java.util.UUID
+import java.util.*
 
 @Component
 class UrlDao(
@@ -25,11 +25,29 @@ class UrlDao(
         )
     }
 
+    fun getByShorten(shorten: String): List<UrlEntity> {
+        val source = MapSqlParameterSource("urlShort", shorten)
+        return jdbcTemplate.query(SELECT_BY_SHORTEN_URL, source) { rs, _ ->
+            return@query UrlEntity(
+                id = UUID.fromString(rs.getString("id")),
+                urlLong = rs.getString("url_long") as String,
+                urlShort = rs.getString("url_short") as String,
+                created = (rs.getObject("created") as Timestamp).toInstant()
+            )
+        }
+    }
+
     companion object {
         const val INSERT_SHORTEN_URL =
             """
                 INSERT INTO url_entity (url_long, url_short, created)
                 VALUES (:urlLong, :urlShort, :created)
+            """
+        const val SELECT_BY_SHORTEN_URL =
+            """
+                SELECT id, url_long, url_short, created 
+                FROM url_entity
+                WHERE url_short = :urlShort
             """
     }
 }

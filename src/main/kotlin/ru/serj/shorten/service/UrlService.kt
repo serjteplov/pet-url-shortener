@@ -19,10 +19,20 @@ class UrlService(
             .ints(48, 122)
             .filter { i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97) }
             .limit(10)
-            .collect({ StringBuilder() }, { s, i -> s.appendCodePoint(i) }, { a, b -> a.append(b) })
-            .toString().prependIndent("https://bit.ly/")
+            .collect(
+                { StringBuilder() },
+                { s, i -> s.appendCodePoint(i) },
+                { a, b -> a.append(b) }
+            )
+            .toString()
         val urlEntity = urlRequest.toUrlEntity(urlShort)
         return urlDao.persist(urlEntity).toResponse()
+    }
+
+    fun getLongUrl(shorten: String): String {
+        val entities = urlDao.getByShorten(shorten)
+        val entity = entities.firstOrNull() ?: throw RuntimeException("Url by $shorten was not found, sorry")
+        return entity.urlLong
     }
 }
 

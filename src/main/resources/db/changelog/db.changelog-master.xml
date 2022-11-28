@@ -20,7 +20,8 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
                 url_long text NOT NULL,
                 url_short varchar(50) NULL,
                 created timestamptz NOT NULL,
-                updated timestamp NULL
+                updated timestamp NULL,
+                constraint url_short_unique unique (url_short)
             );
             commit;
         </sql>

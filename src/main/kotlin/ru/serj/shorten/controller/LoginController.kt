@@ -14,7 +14,7 @@ import ru.serj.shorten.domain.LoginDto
 * в spring security. Смотри закомментаренный код в SecurityConfig.
 * Полная версия тут: https://github.com/AlessioCuoccio-IA/LoginUtenteJDBCPostgres/blob
 * /2cae8d3dc8ee736d8318f9bf86c4e6db1e76a142/src/main/java/LoginUtenteJDBCPostgres/HomeController.java
-* */
+*/
 
 @Controller
 class LoginController {
@@ -27,15 +27,11 @@ class LoginController {
     @PostMapping("/login")
     fun loginPost(
         @ModelAttribute("formLogin") formLogin: LoginDto?,
-        // WARN: BindingResult *must* immediately follow the Command.
-        // https://stackoverflow.com/a/29883178/1626026
         bindingResult: BindingResult?,
         model: Model?,
         ra: RedirectAttributes
     ): String? {
-
         println("Login avvenuto con successo")
         return "redirect:/loginSuccess"
-
     }
 }
