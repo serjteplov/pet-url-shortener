@@ -35,4 +35,3 @@ class UrlService(
         return entity.urlLong
     }
 }
-

@@ -8,7 +8,6 @@ import org.springframework.web.servlet.ModelAndView
 import ru.serj.shorten.domain.request.UrlRequest
 import ru.serj.shorten.service.UrlService
 
-
 @RestController
 class TemplateController(
     private val urlService: UrlService
@@ -27,7 +26,6 @@ class TemplateController(
 
     @PostMapping("/submitform")
     fun submitform(@ModelAttribute("url1") request: UrlRequest): ModelAndView {
-        println("######### url = $request")
         val response = urlService.process(request)
         val modelAndView = ModelAndView("short", "url1", response.urlShort)
         modelAndView.model["message"] = "Done!"

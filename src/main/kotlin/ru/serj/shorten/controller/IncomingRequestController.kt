@@ -18,5 +18,4 @@ class IncomingRequestController(
     ) {
         httpServletResponse.sendRedirect(urlService.getLongUrl(shorten))
     }
-
 }
