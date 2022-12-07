@@ -17,9 +17,12 @@ class UrlDao(
         val source = MapSqlParameterSource("urlLong", urlEntity.urlLong)
         source.addValue("urlShort", urlEntity.urlShort)
         source.addValue("created", Timestamp.from(Instant.now()))
+
         val keyHolder = GeneratedKeyHolder()
         jdbcTemplate.update(INSERT_SHORTEN_URL, source, keyHolder)
+        if (keyHolder.keyList.isEmpty()) return urlEntity
         println("keyHolder id = ${keyHolder.keyList[0]["id"]}")
+
         return urlEntity.copy(
             id = keyHolder.keyList[0]["id"] as UUID
         )

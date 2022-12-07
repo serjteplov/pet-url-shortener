@@ -1,5 +1,6 @@
 package ru.serj.shorten.controller
 
+import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
@@ -24,7 +25,7 @@ class TemplateController(
         return ModelAndView("short", model)
     }
 
-    @PostMapping("/submitform")
+    @PostMapping(path = ["/submitform"], consumes = [MediaType.APPLICATION_FORM_URLENCODED_VALUE])
     fun submitform(@ModelAttribute("url1") request: UrlRequest): ModelAndView {
         val response = urlService.process(request)
         val modelAndView = ModelAndView("short", "url1", response.urlShort)

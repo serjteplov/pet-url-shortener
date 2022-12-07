@@ -36,8 +36,18 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("org.postgresql:postgresql")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+    implementation("org.junit.jupiter:junit-jupiter:5.8.1")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
+    testImplementation("io.mockk:mockk:1.13.2")
+    testImplementation("com.ninja-squad:springmockk:3.1.2")
+    testImplementation("org.testcontainers:testcontainers:1.17.6")
+    testImplementation("org.testcontainers:postgresql:1.17.6")
+    testImplementation("io.projectreactor:reactor-test:3.5.0")
+    testImplementation("org.springframework.boot:spring-boot-starter-webflux:2.7.6")
+
+
 }
 
 tasks.withType<KotlinCompile> {

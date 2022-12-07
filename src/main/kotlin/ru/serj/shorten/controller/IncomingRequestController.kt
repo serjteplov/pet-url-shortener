@@ -16,6 +16,7 @@ class IncomingRequestController(
         @PathVariable shorten: String,
         httpServletResponse: HttpServletResponse
     ) {
+        if (shorten == "favicon.ico") return
         httpServletResponse.sendRedirect(urlService.getLongUrl(shorten))
     }
 }
