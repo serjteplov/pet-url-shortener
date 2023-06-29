@@ -11,7 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient
 import org.springframework.web.context.WebApplicationContext
-import ru.serj.shorten.controller.IncomingRequestController
+import ru.serj.shorten.controller.UseCaseController
 import ru.serj.shorten.service.UrlService
 
 @ExtendWith(SpringExtension::class)
@@ -19,7 +19,7 @@ import ru.serj.shorten.service.UrlService
 class IncomingControllerIntegrationTest(
 ) {
     @Autowired
-    lateinit var incomingRequestController: IncomingRequestController
+    lateinit var useCaseController: UseCaseController
 
     @SpykBean
     lateinit var urlService: UrlService
@@ -32,7 +32,7 @@ class IncomingControllerIntegrationTest(
     @BeforeEach
     fun setup() {
         this.webTestClient = MockMvcWebTestClient
-            .bindToController(incomingRequestController) // alternate: bindToApplicationContext(context)
+            .bindToController(useCaseController) // alternate: bindToApplicationContext(context)
             .build()
     }
 

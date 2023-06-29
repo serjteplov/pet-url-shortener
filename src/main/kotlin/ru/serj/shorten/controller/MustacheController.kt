@@ -10,7 +10,7 @@ import ru.serj.shorten.domain.request.UrlRequest
 import ru.serj.shorten.service.UrlService
 
 @RestController
-class TemplateController(
+class MustacheController(
     private val urlService: UrlService
 ) {
 

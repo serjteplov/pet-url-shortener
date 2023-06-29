@@ -10,14 +10,14 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient
 import org.springframework.web.context.WebApplicationContext
-import ru.serj.shorten.controller.TemplateController
+import ru.serj.shorten.controller.MustacheController
 
 @ExtendWith(SpringExtension::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class TemplateControllerIntegrationTest(
+class MustacheControllerIntegrationTest(
 ) {
     @Autowired
-    lateinit var templateController: TemplateController
+    lateinit var mustacheController: MustacheController
 
     @Autowired
     lateinit var context: WebApplicationContext
@@ -27,7 +27,7 @@ class TemplateControllerIntegrationTest(
     @BeforeEach
     fun setup() {
         this.webTestClient = MockMvcWebTestClient
-            .bindToController(templateController) // alternate: bindToApplicationContext(context)
+            .bindToController(mustacheController) // alternate: bindToApplicationContext(context)
             .build()
     }
 

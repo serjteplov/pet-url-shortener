@@ -7,7 +7,7 @@ import ru.serj.shorten.service.UrlService
 import javax.servlet.http.HttpServletResponse
 
 @RestController
-class IncomingRequestController(
+class UseCaseController(
     private val urlService: UrlService
 ) {
 
